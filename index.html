@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrustroChat.</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-theme="dark">
+    <!-- Top Corner Elements -->
+    <div class="top-corner-elements">
+        <span class="corner-username-badge" id="corner-username-display">@Guest</span>
+        <button class="corner-theme-toggle-btn" id="corner-theme-toggle" aria-label="Toggle theme">
+            <div class="theme-icon">🌙</div>
+        </button>
+        <h1 class="corner-logo" id="corner-brand-logo">FrustroChat.</h1>
+    </div>
+
+    <!-- Floating Navbar - Simplified -->
+    <nav class="floating-nav" id="main-navbar">
+        <div class="nav-content">
+            <div class="nav-center">
+                <a href="#" class="nav-link active" data-section="home">Home</a>
+                <span class="nav-separator">•</span>
+                <a href="#" class="nav-link" data-section="topics">Topics</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- App Container -->
+    <div class="app-container">
+        <!-- Background Effects -->
+        <div class="background-effects">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+
+        <!-- Hero Section with Pinned Papers -->
+        <section class="hero-section" id="hero">
+            <div class="hero-content">
+                <h2 class="hero-title">Frustrated • Type • Relief</h2>
+                <p class="hero-subtitle">Anonymous emotions, authentic connections</p>
+                
+                <!-- Hero Flex Container with Pinned Papers -->
+                <div class="hero-flex">
+                    <div class="paper-note left">
+                        <div class="paper-pin">📌</div>
+                        <h4>Why FrustroChat?</h4>
+                        <p>Anonymous space to share and heal</p>
+                        <div class="paper-list">
+                            <div class="paper-item">✓ Complete privacy</div>
+                            <div class="paper-item">✓ No judgment zone</div>
+                            <div class="paper-item">✓ Real support</div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-bar">
+                        <button class="share-bar" id="share-bar">
+                            <div class="share-bar-content">
+                                <span class="share-icon">✨</span>
+                                <span class="share-text">Frustrated? Type and let it out!</span>
+                            </div>
+                            <div class="share-bar-ripple"></div>
+                        </button>
+                    </div>
+                    
+                    <div class="paper-note right">
+                        <div class="paper-pin">📌</div>
+                        <h4>Key Benefits</h4>
+                        <p>Instant relief through connection</p>
+                        <div class="paper-list">
+                            <div class="paper-item">✓ No accounts needed</div>
+                            <div class="paper-item">✓ Real connections</div>
+                            <div class="paper-item">✓ Therapeutic relief</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                
+            </div>
+        </section>
+
+        <!-- Topics Feed -->
+        <section class="topics-section" id="topics">
+            <div class="section-header">
+                <h3 class="section-title">Latest Stories</h3>
+                <button class="refresh-btn" id="refresh-feed">
+                    <span class="refresh-icon">🔄</span>
+                </button>
+            </div>
+            
+            <div class="topics-masonry" id="topics-container">
+                <!-- Topics will be rendered here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>A safe space for anonymous expression and authentic connections</p>
+                <p>Share your thoughts freely • Find understanding • Transform frustration into relief</p>
+            </div>
+            <div class="footer-brand">
+                <p><a href="#hero" class="footer-home-link" id="footer-home-link">FrustroChat.</a> by Chethan</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bottom Floating Input Bar -->
+    <div class="bottom-input-bar" id="bottom-input-bar">
+        <button class="bottom-create-btn" id="bottom-create-btn">
+            <span>Share your thoughts...</span>
+            <div class="create-icon">✎</div>
+        </button>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top-btn" id="scroll-top-btn" aria-label="Scroll to top">
+        <svg class="scroll-icon" viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
+    <!-- Create Topic Modal -->
+    <div class="modal-overlay hidden" id="topic-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Share Your Story</h3>
+                <button class="modal-close" id="close-topic-modal">
+                    <span>✕</span>
+                </button>
+            </div>
+            
+            <form class="topic-form" id="topic-form">
+                <div class="form-group">
+                    <label class="form-label">What's on your mind?</label>
+                    <input 
+                        type="text" 
+                        class="form-input title-input" 
+                        id="topic-title"
+                        placeholder="Give your story a title..."
+                        maxlength="200"
+                        required
+                    >
+                    <div class="char-counter">
+                        <span id="title-count">0</span>/200
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Tell your story</label>
+                    <textarea 
+                        class="form-input content-input" 
+                        id="topic-content"
+                        placeholder="Let it all out... this is your safe space to be honest about your frustrations."
+                        rows="6"
+                        maxlength="2000"
+                        required
+                    ></textarea>
+                    <div class="char-counter">
+                        <span id="content-count">0</span>/2000
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-topic">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="submit-topic">
+                        <span class="btn-text">Share Story</span>
+                        <span class="btn-loader hidden">✨ Sharing...</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Reply Modal -->
+    <div class="modal-overlay hidden" id="reply-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Reply to Story</h3>
+                <button class="modal-close" id="close-reply-modal">
+                    <span>✕</span>
+                </button>
+            </div>
+            
+            <div class="reply-preview" id="reply-topic-preview">
+                <!-- Topic preview will be inserted here -->
+            </div>
+
+            <form class="reply-form" id="reply-form">
+                <div class="form-group">
+                    <label class="form-label">Your response</label>
+                    <textarea 
+                        class="form-input reply-input" 
+                        id="reply-content"
+                        placeholder="Share your thoughts, offer support, or relate your experience..."
+                        rows="4"
+                        maxlength="1000"
+                        required
+                    ></textarea>
+                    <div class="char-counter">
+                        <span id="reply-count">0</span>/1000
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancel-reply">Cancel</button>
+                    <button type="submit" class="btn btn-primary" id="submit-reply">
+                        <span class="btn-text">Post Reply</span>
+                        <span class="btn-loader hidden">💬 Posting...</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification System -->
+    <div class="notification-container">
+        <div class="notification hidden" id="notification">
+            <div class="notification-content">
+                <span class="notification-text"></span>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
