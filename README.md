@@ -1,6 +1,7 @@
 # FrustroChat.
 
 FrustroChat. is a revolutionary social platform designed for anonymous emotional expression and authentic human connection. The core philosophy is simple yet powerful: **Frustrated? Type – Relief!**
+DEPLOY LINK : https://frusto-chat.vercel.app/
 
 ## Overview
 
